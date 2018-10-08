@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Position 1",
+    "order": 2,
+    "image": "https://bit.ly/2QBDdJz"
+  },
+  {
+    "id": 2,
+    "name": "Position 2",
+    "order": 1,
+    "image": "https://bit.ly/2OMD1Kd"
+  }
+]

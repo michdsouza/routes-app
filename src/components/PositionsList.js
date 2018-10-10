@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Position from "./Position";
 import { Link, Route } from "react-router-dom";
+import "./Position.css";
 
 export default class PositionsList extends Component {
   constructor() {
@@ -30,11 +32,11 @@ export default class PositionsList extends Component {
   }
 
   positionLink(position) {
-    return (
-      <li key={position.id}>
-        <Link to={`/positions/${position.id}`}>{position.name}</Link>
-      </li>
-    )
+    return <li key={position.id}>
+      <img src={position.image} alt='yum' />
+      <h3><Link to={`/positions/${position.id}`}>{position.name}</Link></h3>
+      <p>ID: {position.id} & Order: {position.order}</p>
+      </li>;
   }
 
   positionList() {
@@ -52,20 +54,4 @@ export default class PositionsList extends Component {
         <Route exact path={`/positions`} component={PositionsList} />
       </div>;
   }
-}
-
-const Position = ({ match, data }) => {
-  const position = data.find(p => p.id == match.params.positionId)
-  let positionData = <div>Position not found</div>
-
-  if(position) {
-    positionData = <div>
-      <p>Id: {position.id}</p>
-      <p>Name: {position.name}</p>
-      <p>Order: {position.order}</p>
-      <img alt="yum" src="position.image"></img>
-    </div>
-  }
-
-  return <div>{positionData}</div>
 }

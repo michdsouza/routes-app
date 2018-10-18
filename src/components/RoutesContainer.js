@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './Routes.css';
-import PositionsList from './PositionsList';
+import React, { Component } from 'react'
+import './Routes.css'
+import PositionsList from './PositionsList'
 
 export default class RoutesContainer extends Component {
   render() {

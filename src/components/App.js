@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import RoutesContainer from "./RoutesContainer";
-import './App.css';
-import PositionsList from './PositionsList';
+import React, { Component } from 'react'
+import RoutesContainer from "./RoutesContainer"
+import './App.css'
+import PositionsList from './PositionsList'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 export default class App extends Component {
@@ -13,6 +13,6 @@ export default class App extends Component {
           <Route path='/positions' component={PositionsList} />
         </div>
       </BrowserRouter>
-    );
+    )
   }
 }

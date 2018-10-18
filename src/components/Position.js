@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./Position.css";
+import React, { Component } from "react"
+import "./Position.css"
 
 export default class Position extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class Position extends Component {
     const position = this.props.data.find(p => p.id == this.props.match.params.positionId)
     let positionData = <div className="left">
       <h3>Position not found</h3>
-    </div>;
+    </div>
 
     if (position) {
       positionData = <div className="left">
@@ -19,7 +19,7 @@ export default class Position extends Component {
         <p>Name: {position.name}</p>
         <p>Order: {position.order}</p>
         <img alt="yum" src={position.image} />
-      </div>;
+      </div>
     }
 
     return <div>{positionData}</div>

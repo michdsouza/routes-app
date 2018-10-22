@@ -22,6 +22,10 @@ li:hover {
   cursor: pointer;
 }
 
+img {
+  padding: 25px;
+}
+
 .left {
   float: left;
 }

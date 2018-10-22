@@ -6,25 +6,15 @@ div {
 
 ul {
   list-style-type: none;
-  width: 500px;
+  width: 200px;
 }
 
 h3 {
   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
-li img {
-  float: left;
-  margin: 0 15px 0 0;
-}
-
-li p {
-  font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
-}
-
 li {
-  padding: 10px;
-  overflow: auto;
+  padding: 2px;
 }
 
 li:hover {

@@ -1,36 +1,19 @@
 import React, { Component } from "react"
-import Position from "./Position"
-import { Link, Route } from "react-router-dom"
 import "./Position.css"
-import routesData from "../data/routesData"
-import { Draggable } from "react-beautiful-dnd";
-
+import { Draggable } from "react-beautiful-dnd"
 
 export default class PositionsList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      positions: []
-    }
-  }
-
-  componentDidMount() {
-    this.setState({ positions: routesData.postions })
-  }
-
-  positionLink(position) {
+  positionLink(position, index) {
     return (
       <li key={position.id}>
-        <Draggable draggableId={position.id}>
+        <Draggable draggableId={position.id} index={index}>
           {(provided) => (
             <div
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <h3>
-                <Link to={`/positions/${position.id}`}>{position.name}</Link>
-              </h3>
+              <h3>{position.name}</h3>
             </div>
           )}
         </Draggable>
@@ -39,17 +22,14 @@ export default class PositionsList extends Component {
   }
 
   positionList() {
-    return this.state.positions.map(position => this.positionLink(position))
+    return this.props.positions.map((position, index) =>
+      this.positionLink(position, index)
+    );
   }
 
   render() {
     return <div>
       <ul>{this.positionList()}</ul>
-        <Route
-          path={`/positions/:positionId`}
-          render={props => <Position {...props} data={this.state.positions} />}
-        />
-        <Route exact path={`/positions`} component={PositionsList} />
       </div>
   }
 }

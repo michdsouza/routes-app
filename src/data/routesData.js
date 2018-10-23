@@ -1,16 +1,21 @@
 const routesData = {
-  postions: [
-    {
-      id: 1,
+  positions: {
+    "position-1": {
+      id: "position-1",
       name: "Position 1",
-      order: 2,
       image: "/Shark1.jpg"
     },
-    {
-      id: 2,
+    "position-2": {
+      id: "position-2",
       name: "Position 2",
-      order: 1,
       image: "/Shark2.jpg"
+    }
+  },
+  routes: [
+    {
+      id: "route-a",
+      title: "Route A",
+      positionIds: ["position-1", "position-2"]
     }
   ]
 };

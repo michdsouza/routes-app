@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import "./App.css"
 import RoutesContainer from "./RoutesContainer"
+import Position from "./Position"
 import { DragDropContext } from "react-beautiful-dnd"
-import routesData from '../data/routesData';
+import routesData from '../data/routesData'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 export default class App extends Component {
   state = routesData
@@ -32,17 +34,27 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        {this.state.routes.map((route) => {
-          const positions = route.positionIds.map(positionId => this.state.positions[positionId])
-          return <RoutesContainer
-            key={route.id}
-            route={route}
-            positions={positions}
-          />
-        })}
-      </DragDropContext>
-    )
+    const route = this.state.routes[0]
+    const positions = route.positionIds.map(positionId => this.state.positions[positionId])
+
+    return <Router>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Switch>
+            <Route
+              exact path="/"
+              render={props => (
+                <RoutesContainer {...props} route={route} positions={positions} />
+              )}
+            />
+            <Route
+              path="/positions/:positionId"
+              render={props => (
+                <Position {...props} positions={positions} />
+              )}
+            />
+          </Switch>
+        </DragDropContext>
+      </Router>;
   }
 }
+

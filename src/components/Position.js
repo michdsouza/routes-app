@@ -7,7 +7,7 @@ export default class Position extends Component {
   }
 
   render() {
-    const position = this.props.data.find(p => p.id == this.props.match.params.positionId)
+    const position = this.props.positions.find(p => p.id == this.props.match.params.positionId)
     let positionData = <div>
       <h3>Position not found</h3>
     </div>
@@ -18,7 +18,6 @@ export default class Position extends Component {
           <img alt="yum" src={position.image} />
           <p><b>Id:</b> {position.id}</p>
           <p><b>Name:</b> {position.name}</p>
-          <p><b>Order:</b> {position.order}</p>
         </div>;
     }
 

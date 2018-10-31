@@ -25,6 +25,7 @@ a:hover {
 
 h3 {
   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  margin-top: 5px;
 }
 
 li:hover {
@@ -47,10 +48,6 @@ li:hover {
 .handler {
   color: rgb(126, 123, 123);
   margin-right: 2px;
-}
-
-img {
-  padding: 25px;
 }
 
 .left {

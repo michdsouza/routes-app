@@ -3,17 +3,17 @@ const routesData = {
     "position-1": {
       id: "position-1",
       name: "Position 1",
-      image: "/Shark1.jpg"
+      image: "/shark1.jpg"
     },
     "position-2": {
       id: "position-2",
       name: "Position 2",
-      image: "/Shark2.jpg"
+      image: "/shark2.jpg"
     },
     "position-3": {
       id: "position-3",
       name: "Position 3",
-      image: "/Shark1.jpg"
+      image: "/shark3.jpg"
     }
   },
   routes: [

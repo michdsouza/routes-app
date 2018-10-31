@@ -14,10 +14,8 @@ export default class Position extends Component {
 
     if (position) {
       positionData = <div>
-          <h3>Position Details</h3>
+          <h3>{position.name}</h3>
           <img alt="yum" src={position.image} />
-          <p><b>Id:</b> {position.id}</p>
-          <p><b>Name:</b> {position.name}</p>
         </div>
     }
 

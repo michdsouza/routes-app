@@ -12,15 +12,13 @@ export default class PositionsList extends Component {
             {...provided.draggableProps}
             ref={provided.innerRef}
             >
-              <h3>
-              <Link className='container' to={`/positions/${position.id}`}>
-                <div {...provided.dragHandleProps}>
-                  <FaBars className="handler" />
-                </div>
-                {position.name}
-                </Link>
-              </h3>
-            </div>}
+            <Link className='container' to={`/positions/${position.id}`}>
+              <div {...provided.dragHandleProps}>
+                <FaBars className="handler" />
+              </div>
+              <h3>{position.name}</h3>
+            </Link>
+          </div>}
         </Draggable>
       </li>;
   }

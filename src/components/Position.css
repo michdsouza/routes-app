@@ -1,12 +1,12 @@
 * {margin: 0; padding: 0;}
 
 div {
-  margin: 20px;
+  margin: 10px;
 }
 
 ul {
   list-style-type: none;
-  width: 200px;
+  width: 250px;
 }
 
 h3 {
@@ -14,12 +14,29 @@ h3 {
 }
 
 li {
-  padding: 2px;
+  margin: 8px;
 }
 
 li:hover {
-  background: #eee;
   cursor: pointer;
+}
+
+.droppable {
+  border: 1px solid lightgrey;
+  width: 300px;
+  border-radius: 6px;
+}
+
+.container {
+  display: flex;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  background-color: rgb(243, 240, 240);
+}
+
+.handler {
+  color: rgb(126, 123, 123);
+  margin-right: 2px;
 }
 
 img {

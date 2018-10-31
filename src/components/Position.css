@@ -9,12 +9,22 @@ ul {
   width: 250px;
 }
 
-h3 {
-  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
-}
-
 li {
   margin: 8px;
+}
+
+a {
+  color: rgb(104, 102, 102);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(71, 70, 70);
+  text-decoration: underline;
+}
+
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
 li:hover {
@@ -31,7 +41,7 @@ li:hover {
   display: flex;
   border: 1px solid lightgrey;
   border-radius: 6px;
-  background-color: rgb(243, 240, 240);
+  background-color: lightgrey;
 }
 
 .handler {

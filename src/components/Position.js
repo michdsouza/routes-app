@@ -40,8 +40,8 @@ export default class Position extends Component {
 
   drawSource(source, ctx) {
     ctx.fillRect(source.x, source.y, 5, 5)
-    // TODO: Remove hardcoded +8 and +5
-    ctx.fillText(source.name, source.x + 8, source.y + 5)
+    let sourceText = '#' + source.number + ' '  + source.name
+    ctx.fillText(sourceText, source.x + 8, source.y + 5)
   }
 
   render() {

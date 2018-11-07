@@ -7,8 +7,8 @@ const routesData = {
       image_width: 640,
       image_height: 330,
       sources: [
-        { x: 230, y: 20, number: '1', name: "Fin" },
-        { x: 90, y: 120, number: '2', name: "Tail" }
+        { x: 230, y: 20, number: 1, name: "Fin" },
+        { x: 90, y: 120, number: 2, name: "Tail" }
       ]
     },
     "position-2": {
@@ -17,7 +17,7 @@ const routesData = {
       image: "/shark2.jpg",
       image_width: 800,
       image_height: 533,
-      sources: [{ x: 620, y: 350, number: '1', name: "Fin" }]
+      sources: [{ x: 620, y: 350, number: 1, name: "Fin" }]
     },
     "position-3": {
       id: "position-3",
@@ -25,7 +25,7 @@ const routesData = {
       image: "/shark3.jpg",
       image_width: 640,
       image_height: 320,
-      sources: [{ x: 560, y: 280, number: '1', name: "Fin" }]
+      sources: [{ x: 560, y: 280, number: 1, name: "Fin" }]
     }
   },
   routes: [

@@ -1,23 +1,10 @@
 import React, { Component } from 'react'
+import Modal from './Modal.js'
 import './Position.css'
 
 const positionNotFound = <div>
   <h3>Position not found</h3>
 </div>
-
-const Modal = ({ handleClose, handleSave, show, children }) => {
-  return <div className={show ? "modal display-block" : "modal display-none"}>
-      <section className="modal-main">
-        {children}
-        <button onClick={handleClose} className="btn-cancel">
-          Cancel
-        </button>
-        <button onClick={handleSave} className="btn-save">
-          Save
-        </button>
-      </section>
-    </div>;
-}
 
 export default class Position extends Component {
   constructor(props) {
@@ -66,8 +53,8 @@ export default class Position extends Component {
     </div>
   )
 
-  showModal = (x, y) => {
-    this.setState({ show: true, coordinates: {x: x, y: y} })
+  showModal = () => {
+    this.setState({ show: true })
   }
 
   hideModal = () => {
@@ -75,12 +62,22 @@ export default class Position extends Component {
   }
 
   imageClick = (event) => {
-    this.showModal(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
+    this.setState({ coordinates: { x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY } })
+    this.showModal()
   }
 
   handleSave = () => {
     this.drawSource(this.addSource())
     this.setState({ show: false })
+  }
+
+  updateSourceName = (event) => {
+    this.setState({ sourceName: event.target.value })
+  }
+
+  getMaxSourceNumber() {
+    const sourceNumbers = this.state.position.sources.map(s => { return s.number })
+    return Math.max(...sourceNumbers)
   }
 
   addSource() {
@@ -89,16 +86,10 @@ export default class Position extends Component {
 
     if(sourceName) {
       this.drawPoint()
-      const sources = this.state.position.sources
-      const sourceNumbers = sources.map(s => { return s.number })
-      const maxNumber = Math.max(...sourceNumbers)
+      const maxSourceNumber = this.getMaxSourceNumber()
+      const coordinates = this.state.coordinates
 
-      source = {
-        x: this.state.coordinates.x,
-        y: this.state.coordinates.y,
-        name: sourceName,
-        number: maxNumber + 1
-      }
+      source = { x: coordinates.x, y: coordinates.y, name: sourceName, number: maxSourceNumber + 1 }
       this.state.position.sources.push(source)
       this.setState({ sourceName: '' })
     }
@@ -112,14 +103,10 @@ export default class Position extends Component {
   }
 
   drawSource(source) {
-    const ctx = this.state.canvas.getContext("2d");
+    const ctx = this.state.canvas.getContext("2d")
     ctx.fillRect(source.x, source.y, 5, 5)
     let sourceText = '#' + source.number + ' '  + source.name
     ctx.fillText(sourceText, source.x + 8, source.y + 5)
-  }
-
-  updateSourceName = (event) => {
-    this.setState({ sourceName: event.target.value })
   }
 
   render() {
@@ -129,9 +116,9 @@ export default class Position extends Component {
     return <div>
         <Modal show={this.state.show} handleClose={this.hideModal} handleSave={this.handleSave}>
           <h4>Source Name</h4>
-        <input type="text" value={this.state.sourceName} onChange={this.updateSourceName} className="txt-source" />
+          <input type="text" value={this.state.sourceName} onChange={this.updateSourceName} className="txt-source" />
         </Modal>
         {positionData}
-      </div>;
+      </div>
   }
 }

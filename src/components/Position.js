@@ -28,7 +28,7 @@ export default class Position extends Component {
     img.onload = () => {
       ctx.drawImage(img, 0, 0)
       ctx.fillStyle = 'red'
-      ctx.font = "20px Helvetica"
+      ctx.font = '20px Helvetica'
       position.sources.map((source) =>
         this.drawSource(source)
       )
@@ -39,16 +39,16 @@ export default class Position extends Component {
     <div>
       <h3>{position.name}</h3>
       <canvas
-        ref="canvas"
+        ref='canvas'
         width={position.image_width}
         height={position.image_height}
         onClick={this.imageClick}
       />
       <img
-        ref="image"
-        alt="yum"
+        ref='image'
+        alt='yum'
         src={position.image}
-        className="hidden"
+        className='hidden'
       />
     </div>
   )
@@ -97,13 +97,13 @@ export default class Position extends Component {
   }
 
   drawPoint() {
-    const ctx = this.state.canvas.getContext("2d")
+    const ctx = this.state.canvas.getContext('2d')
     const coordinates = this.state.coordinates
     ctx.fillRect(coordinates.x, coordinates.y, 5, 5)
   }
 
   drawSource(source) {
-    const ctx = this.state.canvas.getContext("2d")
+    const ctx = this.state.canvas.getContext('2d')
     ctx.fillRect(source.x, source.y, 5, 5)
     let sourceText = '#' + source.number + ' '  + source.name
     ctx.fillText(sourceText, source.x + 8, source.y + 5)
@@ -115,8 +115,13 @@ export default class Position extends Component {
 
     return <div>
         <Modal show={this.state.show} handleClose={this.hideModal} handleSave={this.handleSave}>
-          <h4>Source Name</h4>
-          <input type="text" value={this.state.sourceName} onChange={this.updateSourceName} className="txt-source" />
+          <input
+            type='text'
+            value={this.state.sourceName}
+            onChange={this.updateSourceName}
+            className='txt-source'
+            placeholder='Name'
+          />
         </Modal>
         {positionData}
       </div>

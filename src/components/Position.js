@@ -33,6 +33,14 @@ export default class Position extends Component {
         this.drawSource(source)
       )
     }
+
+    document.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) this.handleSave()
+    })
+
+    document.addEventListener('keyup', (e) => {
+      if (e.keyCode === 27) this.hideModal()
+    })
   }
 
   positionFound = position => (

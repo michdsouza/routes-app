@@ -122,7 +122,7 @@ export default class Position extends Component {
     let positionData = position ? this.positionFound(position) : positionNotFound
 
     return <div>
-        <Modal show={this.state.show} handleClose={this.hideModal} handleSave={this.handleSave}>
+        <Modal show={this.state.show} coordinates={this.state.coordinates} handleClose={this.hideModal} handleSave={this.handleSave}>
           <input
             type='text'
             value={this.state.sourceName}

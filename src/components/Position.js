@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Popup from './Popup.js'
 import './Position.css'
+import Sources from './Sources.js';
 
 const positionNotFound = <div>
   <h3>Position not found</h3>
@@ -122,16 +123,15 @@ export default class Position extends Component {
     let positionData = position ? this.positionFound(position) : positionNotFound
 
     return <div>
-        <Popup show={this.state.show} coordinates={this.state.coordinates} handleClose={this.hidePopup} handleSave={this.handleSave}>
-          <input
-            type='text'
-            value={this.state.sourceName}
-            onChange={this.updateSourceName}
-            className='txt-source'
-            placeholder='Name'
-          />
-        </Popup>
-        {positionData}
+        <div>
+          <Popup show={this.state.show} coordinates={this.state.coordinates} handleClose={this.hidePopup} handleSave={this.handleSave}>
+            <input type="text" value={this.state.sourceName} onChange={this.updateSourceName} className="txt-source" placeholder="Name" />
+          </Popup>
+          {positionData}
+        </div>
+        <div>
+          <Sources sources={position.sources} />
+        </div>
       </div>
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './Modal.css'
+import './Popup.css'
 
-export default class Modal extends Component {
+export default class Popup extends Component {
   constructor(props) {
     super(props)
   }
@@ -14,8 +14,8 @@ export default class Modal extends Component {
   }
 
   render() {
-    return <div className={this.props.show ? 'modal display-block' : 'modal display-none'}>
-        <section className='modal-main' style={this.divPosition()}>
+    return <div className={this.props.show ? 'popup display-block' : 'popup display-none'}>
+        <section className='popup-main' style={this.divPosition()}>
           {this.props.children}
         </section>
       </div>

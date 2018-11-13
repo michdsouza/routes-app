@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Modal from './Modal.js'
+import Popup from './Popup.js'
 import './Position.css'
 
 const positionNotFound = <div>
@@ -39,7 +39,7 @@ export default class Position extends Component {
     })
 
     document.addEventListener('keyup', (e) => {
-      if (e.keyCode === 27) this.hideModal()
+      if (e.keyCode === 27) this.hidePopup()
     })
   }
 
@@ -61,17 +61,17 @@ export default class Position extends Component {
     </div>
   )
 
-  showModal = () => {
+  showPopup = () => {
     this.setState({ show: true })
   }
 
-  hideModal = () => {
+  hidePopup = () => {
     this.setState({ show: false })
   }
 
   imageClick = (event) => {
     this.setState({ coordinates: { x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY } })
-    this.showModal()
+    this.showPopup()
   }
 
   handleSave = () => {
@@ -122,7 +122,7 @@ export default class Position extends Component {
     let positionData = position ? this.positionFound(position) : positionNotFound
 
     return <div>
-        <Modal show={this.state.show} coordinates={this.state.coordinates} handleClose={this.hideModal} handleSave={this.handleSave}>
+        <Popup show={this.state.show} coordinates={this.state.coordinates} handleClose={this.hidePopup} handleSave={this.handleSave}>
           <input
             type='text'
             value={this.state.sourceName}
@@ -130,7 +130,7 @@ export default class Position extends Component {
             className='txt-source'
             placeholder='Name'
           />
-        </Modal>
+        </Popup>
         {positionData}
       </div>
   }

@@ -11,3 +11,11 @@ th, td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.flag-off {
+  color: #7e7b7b;
+}
+
+.flag-on {
+  color: #a10707;
+}

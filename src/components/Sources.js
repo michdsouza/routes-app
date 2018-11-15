@@ -1,22 +1,6 @@
 import React, { Component } from 'react'
 import './Sources.css'
-
-const sourceTable = sources => (
-  <table>
-    <tbody>
-      <tr>
-        <th>Number</th>
-        <th>Name</th>
-      </tr>
-      {sources.map(source => (
-        <tr key={source.number}>
-          <td>{source.number}</td>
-          <td>{source.name}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-);
+import { FaFlag } from 'react-icons/fa'
 
 export default class Sources extends Component {
   constructor(props) {
@@ -26,12 +10,38 @@ export default class Sources extends Component {
     }
   }
 
+  sourceTable = sources => (
+    <table>
+      <tbody>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th />
+        </tr>
+        {sources.map(source => (
+          <tr key={source.number}>
+            <td>{source.number}</td>
+            <td>{source.name}</td>
+            <td><FaFlag className={source.flagged ? 'flag-on' : 'flag-off'} onClick={() => this.changeColor(source)} /></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+
+  changeColor = (source) => {
+    let sources = this.state.sources
+    const index = sources.findIndex(s => s.number === source.number)
+    sources[index].flagged = !source.flagged
+    this.setState({sources: sources})
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ sources: nextProps.sources })
   }
 
   render() {
-    return <div>{sourceTable(this.state.sources)}</div>;
+    return <div>{this.sourceTable(this.state.sources)}</div>
   }
 }
 

@@ -28,7 +28,7 @@ export default class Position extends Component {
 
     img.onload = () => {
       ctx.drawImage(img, 0, 0)
-      ctx.fillStyle = 'red'
+      ctx.fillStyle = '#a10707'
       ctx.font = '20px Helvetica'
       position.sources.map((source) =>
         this.drawSource(source)

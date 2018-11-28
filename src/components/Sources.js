@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Sources.css'
 import { FaFlag } from 'react-icons/fa'
 import { Button } from 'reactstrap'
+import Editable from 'react-x-editable'
 
 export default class Sources extends Component {
   constructor(props) {
@@ -23,7 +24,12 @@ export default class Sources extends Component {
         {sources.map(source => (
           <tr key={source.number}>
             <td>{source.number}</td>
-            <td>{source.name}</td>
+            <td><Editable
+              name={source.name}
+              value={source.name}
+              dataType='text'
+              mode='inline'
+            /></td>
             <td><FaFlag className={source.flagged ? 'flag-on' : 'flag-off'} onClick={() => this.changeColor(source)} /></td>
             <td><Button color='danger' size='sm' onClick={() => this.deleteSource(source)}>Delete</Button></td>
           </tr>

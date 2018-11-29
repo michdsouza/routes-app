@@ -118,6 +118,9 @@ export default class Position extends Component {
     ctx.fillText(sourceText, source.x + 8, source.y + 5)
   }
 
+  updateSources(sources) {
+  }
+
   render() {
     const position = this.state.position
     let positionData = position ? this.positionFound(position) : positionNotFound
@@ -130,7 +133,7 @@ export default class Position extends Component {
           {positionData}
         </div>
         <div>
-          <Sources sources={position.sources} />
+          <Sources sources={position.sources} updateSources={this.updateSources} />
         </div>
       </div>
   }

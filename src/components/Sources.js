@@ -25,12 +25,13 @@ export default class Sources extends Component {
           <tr key={source.number}>
             <td>{source.number}</td>
             <td><Editable
-              name={source.name}
               value={source.name}
               dataType='text'
               mode='inline'
+              showButtons={false}
+              handleSubmit={this.updateSourceName}
             /></td>
-            <td><FaFlag className={source.flagged ? 'flag-on' : 'flag-off'} onClick={() => this.changeColor(source)} /></td>
+            <td><FaFlag className={source.flagged ? 'flag-on' : 'flag-off'} onClick={() => this.flagSource(source)} /></td>
             <td><Button color='danger' size='sm' onClick={() => this.deleteSource(source)}>Delete</Button></td>
           </tr>
         ))}
@@ -38,11 +39,12 @@ export default class Sources extends Component {
     </table>
   )
 
-  changeColor = source => {
+  flagSource = source => {
     let sources = this.state.sources
     const foundIndex = sources.findIndex(s => s.number === source.number)
     sources[foundIndex].flagged = !source.flagged
     this.setState({sources: sources})
+    this.props.updateSources(sources)
   }
 
   deleteSource = source => {
@@ -50,6 +52,15 @@ export default class Sources extends Component {
     const foundIndex = sources.findIndex(s => s.number === source.number)
     sources.splice(foundIndex, 1)
     this.setState({sources: sources})
+    this.props.updateSources(sources)
+  }
+
+  updateSourceName = editable => {
+    let sources = this.state.sources
+    const foundIndex = sources.findIndex(s => s.name === editable.props.value)
+    sources[foundIndex].name = editable.newValue
+    this.setState({ sources: sources })
+    this.props.updateSources(sources)
   }
 
   componentWillReceiveProps(nextProps) {

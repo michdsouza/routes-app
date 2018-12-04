@@ -133,7 +133,7 @@ export default class Position extends Component {
           {positionData}
         </div>
         <div>
-          <Sources sources={position.sources} updateSources={this.updateSources} />
+          <Sources sources={position.sources} updateSources={this.updateSources.bind(this)} />
         </div>
       </div>
   }

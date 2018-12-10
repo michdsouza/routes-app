@@ -30,9 +30,10 @@ export default class Position extends Component {
       ctx.drawImage(img, 0, 0)
       ctx.fillStyle = '#a10707'
       ctx.font = '20px Helvetica'
-      position.sources.map((source) =>
+      position.sources.map((source) => {
+        this.setRectangleColour(source)
         this.drawSource(source)
-      )
+      })
     }
 
     document.addEventListener('keyup', (e) => {
@@ -118,7 +119,19 @@ export default class Position extends Component {
     ctx.fillText(sourceText, source.x + 8, source.y + 5)
   }
 
+  setRectangleColour(source) {
+    const ctx = this.refs.canvas.getContext('2d')
+    ctx.fillStyle = source.flagged ? '#a10707' : 'black'
+  }
+
   updateSources(sources) {
+    const position = this.state.position
+    position.sources = sources
+    this.setState({ position: position })
+    position.sources.map((source) => {
+      this.setRectangleColour(source)
+      this.drawSource(source)
+    })
   }
 
   render() {

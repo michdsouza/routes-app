@@ -21,20 +21,11 @@ export default class Position extends Component {
 
   componentDidMount() {
     const canvas = this.refs.canvas
-    const ctx = canvas.getContext('2d')
     const img = this.refs.image
     const position = this.props.positions.find(p => p.id == this.props.match.params.positionId)
     this.setState({ position: position, canvas: canvas })
 
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0)
-      ctx.fillStyle = '#a10707'
-      ctx.font = '20px Helvetica'
-      position.sources.map((source) => {
-        this.setRectangleColour(source)
-        this.drawSource(source)
-      })
-    }
+    img.onload = () => { this.drawImage(img, position) }
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === 13) this.handleSave()
@@ -42,6 +33,17 @@ export default class Position extends Component {
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === 27) this.hidePopup()
+    })
+  }
+
+  drawImage(img, position) {
+    const ctx = this.refs.canvas.getContext('2d')
+
+    ctx.drawImage(img, 0, 0)
+    ctx.font = '20px Helvetica'
+    position.sources.map((source) => {
+      this.setRectangleColour(ctx, source)
+      this.drawSource(source)
     })
   }
 
@@ -119,8 +121,7 @@ export default class Position extends Component {
     ctx.fillText(sourceText, source.x + 8, source.y + 5)
   }
 
-  setRectangleColour(source) {
-    const ctx = this.refs.canvas.getContext('2d')
+  setRectangleColour(ctx, source) {
     ctx.fillStyle = source.flagged ? '#a10707' : 'black'
   }
 
@@ -128,10 +129,7 @@ export default class Position extends Component {
     const position = this.state.position
     position.sources = sources
     this.setState({ position: position })
-    position.sources.map((source) => {
-      this.setRectangleColour(source)
-      this.drawSource(source)
-    })
+    this.drawImage(this.refs.image, position)
   }
 
   render() {
